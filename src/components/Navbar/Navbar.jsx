@@ -11,7 +11,7 @@ const Navbar = () => {
         </h2>
         <NavButtons>
             <span>
-                <Link className='a' to='/register'>Cadastre-se</Link>
+                <Link className='a' to='/signup'>Cadastre-se</Link>
             </span>
             <span>
                 <Link to='/login'>Entre</Link>
