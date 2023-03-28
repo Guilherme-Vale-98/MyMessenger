@@ -1,17 +1,25 @@
 import React, { useState } from 'react'
+import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { ButtonContainer, InputContainer, StyledButton, StyledSection } from './SignUp.Styles'
+import { auth, db } from '../utils/firebase.utils'
+import { doc, setDoc, Timestamp } from 'firebase/firestore'
+import { useNavigate } from 'react-router-dom'
+
+
+
 
 const INITIAL_DATA_STATE={
     name: '',
     email: '',
     password: '',
     confirmPassword:'',
-    error: false,
+    error: null,
     loading: false,
 }
 
 const SignUp = () => {
     const [data, setData] = useState(INITIAL_DATA_STATE);
+    const navigate = useNavigate();
 
     const {name, email, password, confirmPassword, error, loading} = data;
 
@@ -19,16 +27,42 @@ const SignUp = () => {
         setData({...data, [e.target.name]: e.target.value}) 
     }
 
-    const checkPassword = !!password && password === confirmPassword && error;
+    const checkPassword = !!password && password === confirmPassword;
 
-    const handleSubmit = e =>{
+    const handleSubmit = async e =>{
         e.preventDefault();
-        if(!name || !email || !password || !confirmPassword){
-            setData({...data, error: true})
+        if(!name || !email || !password || !confirmPassword || !checkPassword){
+            setData({...data, error: true});
+            return;
+        };
+
+        try{
+            const result = await createUserWithEmailAndPassword(auth, email, password)
+            const docRef = doc(db,"users", result.user.uid);
+            try {await setDoc(docRef, {
+                uid: result.user.uid,
+                name,
+                email,
+                createdAt: Timestamp.fromDate((new Date())),
+                isOnline: true,
+            });}catch(err){
+                console.log('error creating user', err)
+            }
+            setData({
+                name: '',
+                email: '',
+                password: '',
+                confirmPassword: '',
+                error: null,
+                loading: false,
+            })
+            navigate('/');
+            
+        }catch(err){
+            setData({...data, error: err.code, loading: false});
+            console.log(err.code)
         }
-      
     }
-    console.log(checkPassword)
 
   return (
     <StyledSection>
@@ -43,7 +77,7 @@ const SignUp = () => {
                 <label htmlFor="email">Email: </label>
                 <input type="text" name='email' value={email} onChange={handleChange}  />
             </InputContainer>
-            {!email && error? <p>Este email é inválido</p>: ''}
+            {error === 'auth/invalid-email'? <p>Este email é inválido</p>: ''}
             <InputContainer borderRed={!password && error? true: ''}>
                 <label htmlFor="password">Senha: </label>
                 <input type="password" name='password' value={password} onChange={handleChange}  />
