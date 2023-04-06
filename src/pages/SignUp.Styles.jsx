@@ -39,6 +39,7 @@ export const StyledSection = styled.section`
     left: 50%;
     transform: translate(-50%);
     background-color: #F3F3F3;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
     h2{
         text-align: center;
         margin-bottom: 0.8rem;

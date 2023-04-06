@@ -20,17 +20,20 @@ const INITIAL_DATA_STATE={
 const SignUp = () => {
     const [data, setData] = useState(INITIAL_DATA_STATE);
     const navigate = useNavigate();
+    const [check, setCheck] = useState(false)
 
     const {name, email, password, confirmPassword, error, loading} = data;
+    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
     const handleChange = (e) =>{
-        setData({...data, [e.target.name]: e.target.value}) 
+        setData({...data, [e.target.name]: e.target.value})
     }
 
     const checkPassword = !!password && password === confirmPassword;
 
     const handleSubmit = async e =>{
         e.preventDefault();
+        setCheck(true);
         if(!name || !email || !password || !confirmPassword || !checkPassword){
             setData({...data, error: true});
             return;
@@ -64,6 +67,7 @@ const SignUp = () => {
         }
     }
 
+
   return (
     <StyledSection>
         <h2>CRIE SUA CONTA</h2>
@@ -73,11 +77,11 @@ const SignUp = () => {
                 <input type="text" name='name' value={name} onChange={handleChange} />
             </InputContainer>
             {!name && error? <p>Este nome é inválido</p>: ''}
-            <InputContainer  borderRed={!email && error? true: ''}>
+            <InputContainer  borderRed={(!email && error) || (!regex.test(email) && error)? true: ''}>
                 <label htmlFor="email">Email: </label>
                 <input type="text" name='email' value={email} onChange={handleChange}  />
             </InputContainer>
-            {error === 'auth/invalid-email'? <p>Este email é inválido</p>: ''}
+            {(!email && error) || (!regex.test(email) && error) ? <p>Este email é inválido</p>: ''}
             <InputContainer borderRed={!password && error? true: ''}>
                 <label htmlFor="password">Senha: </label>
                 <input type="password" name='password' value={password} onChange={handleChange}  />
