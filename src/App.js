@@ -7,6 +7,7 @@ import SignUp from './pages/SignUp';
 import Login from './pages/Login';
 import AuthProvider from './context/authContext';
 import Privateroute from './components/Privateroute';
+import Profile from './pages/Profile';
 
 
 
@@ -17,8 +18,9 @@ function App() {
       <BrowserRouter>
         <Navbar/>
         <Routes>
-          <Route exact path='/' element={<Privateroute/>}>
+          <Route element={<Privateroute/>}>
             <Route exact path='/' element={<Home/>}/>     
+            <Route exact path='/profile' element={<Profile/>}/>     
           </Route>       
           <Route exact path='/signup' element={<SignUp/>}></Route>
           <Route exact path='/login' element={<Login/>}></Route>
