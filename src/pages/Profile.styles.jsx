@@ -31,7 +31,7 @@ export const Overlay = styled.div`
     &:hover{
         *{
             visibility: visible;
-            opacity: 0.7;
+            
         }
     }
 `
