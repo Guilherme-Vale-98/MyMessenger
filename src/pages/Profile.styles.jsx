@@ -9,6 +9,7 @@ export const PhotoContainer = styled.div`
     }
     max-width: 8.5rem;
     min-height: 8.5rem;
+    max-height: 8.5rem;
     margin-right: 1rem;
     position: relative;
     flex: 1 0 auto;

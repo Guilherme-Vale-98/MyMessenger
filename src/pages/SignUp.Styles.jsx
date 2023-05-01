@@ -10,6 +10,7 @@ export const ButtonContainer = styled.div`
 export const StyledButton = styled.button`
     height: 3.3rem;
     width: 10rem;
+    text-align: center;
     background-color: black;
     color: rgb(222, 216, 209);
 `
