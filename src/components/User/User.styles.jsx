@@ -1,12 +1,16 @@
 import styled from "styled-components"
 
+export const AppContainer = styled.div`
+    display: flex;
+    margin: 2rem;
+    
+`
 
 export const UserContainer = styled.div`
     display: flex;
     min-width: 400px;
     max-width: 400px;
     flex-direction: column;
-    margin-left: 2rem;
     align-items: center;
     font-size: 1.5rem;
     div{
@@ -16,13 +20,24 @@ export const UserContainer = styled.div`
           }
     }
 `
+export const ChatContainer = styled.div`
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    border-bottom: 2px solid #888789;
+`
+
+export const MessageContainer = styled.div`
+    display: flex;
+    align-items: center; 
+`
+
 
 export const UserContacts = styled.div`
     display: flex;
     &:hover{
         background-Color: #737576;
     }
-    margin: 1rem;
     padding: 0.5rem 0.5rem 0.5rem 0rem;
     border-bottom: 2px solid #888789;
     width: 80%;
@@ -42,7 +57,7 @@ export const UserContacts = styled.div`
 
     .green{
         content: '';
-        background-color: green;
+        background-color: #46AB5E;
         border-radius: 9000px;
         width: 13px;
         height: 13px;
@@ -54,7 +69,7 @@ export const UserContacts = styled.div`
     
     .red{
         content: '';
-        background-color: red;
+        background-color: #E41E3F;
         border-radius: 9000px;
         width: 13px;
         height: 13px;

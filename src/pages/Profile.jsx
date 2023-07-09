@@ -42,9 +42,7 @@ const Profile = () => {
                     setImage("");
                 } catch (error) {
                     console.log(error.message)
-                }
-                
-                
+                }               
             }
 
             uploadImg();
