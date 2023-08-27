@@ -17,7 +17,6 @@ export const MessageTextContainer=styled.textarea`
 `
 
 export const ChatContainer = styled.div`
-    display: flex;
     width: 100%;
     border-bottom: 2px solid #888789;
 `
@@ -26,19 +25,18 @@ export const MessageContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    justify-content: center;
-    align-items: end;
     h3{
         width: 100%;
         text-align: center;
         align-self: start;
     }
-    div{
+    .a{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
         width: 100%;
-        max-height: 28rem;
+        height: 60vh;
         overflow: auto;
-        align-self: center;
-        margin-left: auto;
     }
     div::-webkit-scrollbar {
         display:none;
