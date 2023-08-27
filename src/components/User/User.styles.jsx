@@ -20,18 +20,6 @@ export const UserContainer = styled.div`
           }
     }
 `
-export const ChatContainer = styled.div`
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    border-bottom: 2px solid #888789;
-`
-
-export const MessageContainer = styled.div`
-    display: flex;
-    align-items: center; 
-`
-
 
 export const UserContacts = styled.div`
     display: flex;
@@ -78,6 +66,4 @@ export const UserContacts = styled.div`
         left: 70px;
         z-index: 1;
     }
-`
-export const ImgHolder = styled.div`
 `
