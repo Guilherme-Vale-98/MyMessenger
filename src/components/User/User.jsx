@@ -2,7 +2,6 @@ import React from 'react'
 import { UserContacts } from './User.styles'
 
 const User = ({user, selectUser}) => {
-  console.log(user.isOnline)
   return (
     <UserContacts onClick={()=>selectUser(user)} >
       <img src={user.avatar}/>

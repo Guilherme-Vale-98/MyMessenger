@@ -1,4 +1,4 @@
-import { collection, onSnapshot, query, where, addDoc, Timestamp } from 'firebase/firestore';
+import { collection, onSnapshot, query, where, addDoc, Timestamp, orderBy } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react'
 import { auth, db, storage } from '../utils/firebase.utils';
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage"
@@ -12,7 +12,7 @@ function Home() {
   const [chat, setChat] = useState("")
   const [text, setText] = useState("")
   const [img, setImage] = useState("")
-
+  const [msgs, setMsgs] = useState([])
   const currentUser = auth.currentUser.uid
 
   useEffect(() =>{
@@ -31,11 +31,24 @@ function Home() {
 
   const selectUser = (user) =>{
     setChat(user)
-  }
+    const targetUser = user.uid
+    const id = currentUser > targetUser ? `${currentUser + targetUser}` : `${targetUser + currentUser}`;
+
+    const msgsRef = collection(db, 'messages', id, 'chat')
+    const q = query(msgsRef, orderBy('createdAt', 'asc'))
+
+    onSnapshot(q, querySnapshot =>{
+      let msgs = []
+      querySnapshot.forEach(doc =>{
+        msgs.push(doc.data())
+      })
+      setMsgs(msgs)
+    })
+  };
 
   const handleSubmit  = async (e) =>{
     e.preventDefault();
-
+    console.log(msgs)
     const targetUser = chat.uid;
 
     const id = currentUser > targetUser ? `${currentUser + targetUser}` : `${targetUser + currentUser}`;
