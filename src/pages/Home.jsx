@@ -85,9 +85,9 @@ function Home() {
         {chat? (
         <MessageContainer>
           <h3>{chat.name}</h3>
-          <div>
-            {msgs.length ? msgs.map((msg, i) => <Message key={i} msg={msg}></Message> ) : null }
-          </div>
+            <div>
+              {msgs.length ? msgs.map((msg, i) => <Message key={i} msg={msg}></Message> ) : null }
+            </div>
           <MessageForm 
           handleSubmit={handleSubmit}
           text={text}

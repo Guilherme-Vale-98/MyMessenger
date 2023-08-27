@@ -34,13 +34,19 @@ export const MessageContainer = styled.div`
         align-self: start;
     }
     div{
-        height: auto;
+        width: 100%;
+        max-height: 28rem;
+        overflow: auto;
         align-self: center;
         margin-left: auto;
     }
+    div::-webkit-scrollbar {
+        display:none;
+      }
     form{
         margin: 0 10%;
         width: 100%;
+        margin-top:2rem;
         label{
             margin-top:0.3rem;
         }
