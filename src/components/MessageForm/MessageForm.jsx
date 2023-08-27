@@ -1,6 +1,7 @@
 import React from 'react'
 import Upload from '../svg/Upload'
 import { FormContainer, MessageTextContainer } from './MessageFormStyles'
+import { StyledButton } from '../../pages/SignUp.Styles'
 
 const MessageForm = ({handleSubmit, text, setText, setImage}) => {
   return (
@@ -15,9 +16,10 @@ const MessageForm = ({handleSubmit, text, setText, setImage}) => {
             style={{display: "none"}}
         >
         </input>
-        <div>
-            <button>Send</button>
-        </div>
+        
+        <StyledButton style={{width: "5rem", height: "3rem", marginLeft: "auto"}}>
+            send
+        </StyledButton>
     </FormContainer>
   )
 }

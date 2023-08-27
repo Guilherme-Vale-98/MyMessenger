@@ -6,6 +6,7 @@ import User from '../components/User/User';
 import { UserContacts, UserContainer, AppContainer} from '../components/User/User.styles';
 import MessageForm from '../components/MessageForm/MessageForm';
 import { ChatContainer, MessageContainer } from '../components/MessageForm/MessageFormStyles';
+import Message from '../components/Message/Message';
 
 function Home() {
   const [users, setUsers] = useState([]);
@@ -83,13 +84,17 @@ function Home() {
       <ChatContainer>
         {chat? (
         <MessageContainer>
+          <h3>{chat.name}</h3>
+          <div>
+            {msgs.length ? msgs.map((msg, i) => <Message key={i} msg={msg}></Message> ) : null }
+          </div>
           <MessageForm 
           handleSubmit={handleSubmit}
           text={text}
           setText={setText}
           setImage={setImage}
           ></MessageForm>
-        </MessageContainer>):(
+        </MessageContainer> ):(
           <>
           <MessageContainer>
             <h3>Select a user to start a conversation</h3>
