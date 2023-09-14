@@ -6,7 +6,11 @@ import { StyledButton } from '../../pages/SignUp.Styles'
 const MessageForm = ({handleSubmit, text, setText, setImage}) => {
   return (
     <FormContainer onSubmit={handleSubmit}>
-        <MessageTextContainer placeholder='Enter message' value={text} onChange={e => setText(e.target.value)}></MessageTextContainer>
+        <MessageTextContainer placeholder='Enter message' value={text} onChange={e => {
+          //console.log(e.target.value)
+          setText(e.target.value)
+          console.log(text)
+          }}></MessageTextContainer>
         <label htmlFor='img'><Upload></Upload></label>
         <input
             onChange={e => setImage(e.target.files[0])}
@@ -18,7 +22,7 @@ const MessageForm = ({handleSubmit, text, setText, setImage}) => {
         </input>
         
         <StyledButton style={{width: "5rem", height: "3rem", marginLeft: "auto"}}>
-            send
+            Enviar
         </StyledButton>
     </FormContainer>
   )

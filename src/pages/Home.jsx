@@ -49,7 +49,6 @@ function Home() {
 
   const handleSubmit  = async (e) =>{
     e.preventDefault();
-    console.log(msgs)
     const targetUser = chat.uid;
 
     const id = currentUser > targetUser ? `${currentUser + targetUser}` : `${targetUser + currentUser}`;
@@ -64,6 +63,8 @@ function Home() {
       url = dlUrl;
     }
 
+    
+    if( text || img){
     await addDoc(collection(db, "messages", id, "chat"), {
       text,
       from: currentUser,
@@ -71,7 +72,8 @@ function Home() {
       createdAt: Timestamp.fromDate(new Date()),
       media: url || ""
     });
-    setText("");
+    setText("");}
+  
   }
 
 
@@ -83,18 +85,18 @@ function Home() {
       </UserContainer>
       <ChatContainer>
         {chat? (
+        <>
         <MessageContainer>
           <h3>{chat.name}</h3>
-            <div className='a'>
-              {msgs.length ? msgs.map((msg, i) => <Message key={i} msg={msg}></Message> ) : null }
-            </div>
-          <MessageForm 
+          {msgs.length ? msgs.map((msg, i) => <Message key={i} msg={msg} currentUser={currentUser}></Message> ) : null }        
+        </MessageContainer>
+        <MessageForm 
           handleSubmit={handleSubmit}
           text={text}
           setText={setText}
           setImage={setImage}
           ></MessageForm>
-        </MessageContainer> ):(
+         </>):(
           <>
           <MessageContainer>
             <h3>Select a user to start a conversation</h3>

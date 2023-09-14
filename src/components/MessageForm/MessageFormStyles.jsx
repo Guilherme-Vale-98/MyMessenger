@@ -14,42 +14,55 @@ export const MessageTextContainer=styled.textarea`
     resize: none; 
     padding-left: 1rem;
     height: 3rem;
+    white-space: pre-wrap; 
 `
 
 export const ChatContainer = styled.div`
     width: 100%;
     border-bottom: 2px solid #888789;
-`
-
-export const MessageContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
-    width: 100%;
-    h3{
-        width: 100%;
-        text-align: center;
-        align-self: start;
-    }
-    .a{
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        width: 100%;
-        height: 60vh;
-        overflow: auto;
-    }
-    div::-webkit-scrollbar {
-        display:none;
-      }
     form{
         margin: 0 10%;
         width: 100%;
-        margin-top:2rem;
+        margin-top:1rem;
         label{
             margin-top:0.3rem;
         }
         button{
             margin-bottom: 0.5rem;
         }
+`
+
+export const MessageContainer = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 60vh;
+    overflow: auto;
+    h3{
+        width: 100%;
+        text-align: center;
+        align-self: start;
+    }
+    .holder{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        div{
+            border-radius: 1.125rem 1.125rem 1.125rem 0rem;
+        }      
+    }
+    .own{
+        align-items: flex-end;
+        div{
+            border-radius: 1.125rem 1.125rem 0 1.125rem;
+        }      
+    }
+
+    div::-webkit-scrollbar {
+        display:none;
+      }
     }
 `
