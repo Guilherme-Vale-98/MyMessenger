@@ -58,6 +58,8 @@ export const MessageContainer = styled.div`
         align-items: flex-end;
         div{
             border-radius: 1.125rem 1.125rem 0 1.125rem;
+            background-color:#1c1d1c;
+            color: white;
         }      
     }
 

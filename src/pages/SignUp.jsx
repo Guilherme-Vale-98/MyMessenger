@@ -97,7 +97,7 @@ const SignUp = () => {
                 </StyledButton>
             </ButtonContainer>
         </form>
-        <span><strong>Crie sua conta</strong> e participe do chat mais divertido da web!!</span>
+        <span><strong>Crie sua conta</strong> e faça sua network!!</span>
     </StyledSection>
   )
 }

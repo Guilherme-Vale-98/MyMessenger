@@ -6,7 +6,7 @@ import { StyledButton } from '../../pages/SignUp.Styles'
 const MessageForm = ({handleSubmit, text, setText, setImage}) => {
   return (
     <FormContainer onSubmit={handleSubmit}>
-        <MessageTextContainer placeholder='Enter message' value={text} onChange={e => {
+        <MessageTextContainer placeholder='Digite uma mensagem' value={text} onChange={e => {
           //console.log(e.target.value)
           setText(e.target.value)
           console.log(text)

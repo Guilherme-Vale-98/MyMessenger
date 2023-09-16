@@ -1,11 +1,17 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import { MessageDisplay } from './MessageStyles'
 import Moment from 'react-moment'
 
 const Message = ({msg, currentUser}) => {
+  const scrollRef = useRef()
+
+  useEffect(()=>{
+    scrollRef.current?.scrollIntoView({behavior: "smooth"}); 
+  }, [msg]);
+
   return (
-    <div className={`holder ${msg.from === currentUser ? "own": null}`}>
-    <MessageDisplay>     
+    <div className={`holder ${msg.from === currentUser ? "own": null}`} >
+    <MessageDisplay ref={scrollRef}>     
        <p>
           {msg.text}
           <br/>
