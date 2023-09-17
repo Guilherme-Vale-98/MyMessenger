@@ -40,6 +40,7 @@ export const MessageContainer = styled.div`
     width: 100%;
     height: 60vh;
     overflow: auto;
+    
     h3{
         width: 100%;
         text-align: center;
@@ -48,7 +49,9 @@ export const MessageContainer = styled.div`
     .holder{
         display: flex;
         flex-direction: column;
+        border: 2px solid red;
         align-items: flex-start;
+        justify-content: flex-end;
         width: 100%;
         div{
             border-radius: 1.125rem 1.125rem 1.125rem 0rem;

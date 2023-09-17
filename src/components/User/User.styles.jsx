@@ -19,6 +19,9 @@ export const UserContainer = styled.div`
             text-align: center;
           }
     }
+    .selected{
+        background-Color: #737576;
+    }
 `
 
 export const UserContacts = styled.div`

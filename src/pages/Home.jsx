@@ -1,4 +1,4 @@
-import { collection, onSnapshot, query, where, addDoc, Timestamp, orderBy } from 'firebase/firestore';
+import { collection, onSnapshot, query, where, addDoc, Timestamp, orderBy, setDoc, doc } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react'
 import { auth, db, storage } from '../utils/firebase.utils';
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage"
@@ -72,8 +72,17 @@ function Home() {
       createdAt: Timestamp.fromDate(new Date()),
       media: url || ""
     });
+
+    await setDoc(doc(db, "lastMsg", id), {
+      text,
+      from: currentUser,
+      to: targetUser,
+      createdAt: Timestamp.fromDate(new Date()),
+      media: url || "",
+      unread: true
+    })
+
     setText("");}
-  
   }
 
 
@@ -81,7 +90,7 @@ function Home() {
     <AppContainer>
       <UserContainer>
       <span>Contatos</span>
-      {users.map(user => <User key={user.uid} user={user} selectUser={selectUser}/> )}
+      {users.map(user => <User key={user.uid} user={user} chat={chat} selectUser={selectUser} currentUser={currentUser}/> )}
       </UserContainer>
       <ChatContainer>
         {chat? (
