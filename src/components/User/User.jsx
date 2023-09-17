@@ -20,9 +20,15 @@ const User = ({user, selectUser, currentUser, chat}) => {
 
   return (
     <UserContacts className={`${user.name === chat.name && "selected"}`} onClick={()=>selectUser(user)} >
-      <img src={user.avatar}/>
+      <img src={user.avatar} alt='user'/>
       <span>{user.name}</span>
       <div className={user.isOnline? 'green' : 'red'}></div>
+      {data && (
+        <p>
+          <strong>{data.from === currentUser? "Me: ": null}</strong>
+          {data.text}
+        </p>
+      )}
     </UserContacts>
   )
 }

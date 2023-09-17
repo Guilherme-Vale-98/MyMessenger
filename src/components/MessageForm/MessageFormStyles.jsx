@@ -49,7 +49,6 @@ export const MessageContainer = styled.div`
     .holder{
         display: flex;
         flex-direction: column;
-        border: 2px solid red;
         align-items: flex-start;
         justify-content: flex-end;
         width: 100%;

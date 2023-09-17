@@ -82,7 +82,9 @@ function Home() {
       unread: true
     })
 
-    setText("");}
+    setText("");
+    setImage("");
+  }
   }
 
 

@@ -7,9 +7,7 @@ const MessageForm = ({handleSubmit, text, setText, setImage}) => {
   return (
     <FormContainer onSubmit={handleSubmit}>
         <MessageTextContainer placeholder='Digite uma mensagem' value={text} onChange={e => {
-          //console.log(e.target.value)
           setText(e.target.value)
-          console.log(text)
           }}></MessageTextContainer>
         <label htmlFor='img'><Upload></Upload></label>
         <input

@@ -26,14 +26,25 @@ export const UserContainer = styled.div`
 
 export const UserContacts = styled.div`
     display: flex;
+    flex-wrap: wrap;
     &:hover{
         background-Color: #737576;
+    }
+    p{
+        display: inline-block;
+        width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        font-size: 0.75rem;
+        margin-left: 30%;
     }
     padding: 0.5rem 0.5rem 0.5rem 0rem;
     border-bottom: 2px solid #888789;
     width: 80%;
     position: relative;
     img{
+        border: 2px solid black;
         border-radius: 50%;
         min-width: 4rem;
         margin: 0 1.5rem;
