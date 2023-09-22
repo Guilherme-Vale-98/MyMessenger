@@ -7,6 +7,8 @@ import { UserContacts, UserContainer, AppContainer} from '../components/User/Use
 import MessageForm from '../components/MessageForm/MessageForm';
 import { ChatContainer, MessageContainer } from '../components/MessageForm/MessageFormStyles';
 import Message from '../components/Message/Message';
+import Searchbar from '../components/SearchBar/Searchbar';
+import UsersList from '../components/UsersList/UsersList';
 
 function Home() {
   const [users, setUsers] = useState([]);
@@ -97,7 +99,8 @@ function Home() {
     <AppContainer>
       <UserContainer>
       <span>Contatos</span>
-      {users.map(user => <User key={user.uid} user={user} chat={chat} selectUser={selectUser} currentUser={currentUser}/> )}
+      <Searchbar></Searchbar>
+      <UsersList users={users} chat={chat} selectUser={selectUser} currentUser={currentUser}></UsersList>
       </UserContainer>
       <ChatContainer>
         {chat? (
