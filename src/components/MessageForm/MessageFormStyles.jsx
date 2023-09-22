@@ -13,7 +13,7 @@ export const MessageTextContainer=styled.textarea`
     border-top: 3px solid black;
     resize: none; 
     padding-left: 1rem;
-    height: 3rem;
+    height: 5rem;
     white-space: pre-wrap; 
 `
 
@@ -38,7 +38,7 @@ export const MessageContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    height: 65vh;
+    height: 60vh;
     overflow: auto;
     
     h3{

@@ -47,7 +47,7 @@ function Home() {
     })
 
     const docSnap = await getDoc(doc(db, "lastMsg", id))
-    if(docSnap.data()?.from !== currentUser){
+    if(docSnap.data() && docSnap.data().from !== currentUser){
       await updateDoc(doc(db, "lastMsg", id), {unread: false});
      }
   };
