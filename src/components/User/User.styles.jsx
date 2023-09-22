@@ -81,3 +81,15 @@ export const UserContacts = styled.div`
         z-index: 1;
     }
 `
+export const NewMsg = styled.span`
+    background-color: #1c1d1c;
+    display: block;
+    width:20%;
+    border-radius: 20%;
+    color: white;
+    height: 1.1rem;
+    text-align: center;
+    font-size: 0.7rem !important;
+    vertical-align: middle !important;
+    margin-top: 0.5rem;
+`

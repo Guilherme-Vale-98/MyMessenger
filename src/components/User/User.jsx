@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { UserContacts } from './User.styles'
+import { NewMsg, UserContacts } from './User.styles'
 import { doc, onSnapshot } from 'firebase/firestore'
 import { db } from '../../utils/firebase.utils'
 
@@ -27,6 +27,7 @@ const User = ({user, selectUser, currentUser, chat}) => {
         <p>
           <strong>{data.from === currentUser? "Me: ": null}</strong>
           {data.text}
+          {data.from !== currentUser && data?.unread && (<NewMsg>new</NewMsg>)}
         </p>
       )}
     </UserContacts>

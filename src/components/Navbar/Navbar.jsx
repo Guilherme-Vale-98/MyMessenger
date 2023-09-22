@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import {NavButtons, NavContainer} from './NavbarStyles';
 import { auth, db } from '../../utils/firebase.utils';
@@ -15,6 +15,7 @@ const Navbar = () => {
         })
         await signOut(auth);
     }
+    
   return (
     <NavContainer>
         <h2>
