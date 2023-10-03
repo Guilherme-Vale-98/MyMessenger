@@ -12,6 +12,8 @@ import UsersList from '../components/UsersList/UsersList';
 
 function Home() {
   const [users, setUsers] = useState([]);
+  const [filteredUsers, setFilteredUsers] = useState([]);
+  const [searchField, setSearchField] = useState("")
   const [chat, setChat] = useState("")
   const [text, setText] = useState("")
   const [img, setImage] = useState("")
@@ -31,6 +33,16 @@ function Home() {
     return ()=>unsub();
   }
   ,[])
+
+  const onChangeHandler = (event) => {
+    const searchString = event.target.value.toLocaleLowerCase();
+    setSearchField(searchString)
+  }
+
+  useEffect(()=>{
+    const newFilteredUsers = users.filter(user => user.name.toLowerCase().includes(searchField)) 
+    setFilteredUsers(newFilteredUsers)
+  }, [users,searchField] )
 
   const selectUser = async (user) =>{
     setChat(user)
@@ -99,8 +111,9 @@ function Home() {
     <AppContainer>
       <UserContainer>
       <span>Contatos</span>
-      <Searchbar></Searchbar>
-      <UsersList users={users} chat={chat} selectUser={selectUser} currentUser={currentUser}></UsersList>
+      <Searchbar onChangeHandler={onChangeHandler}></Searchbar>
+      <UsersList users={filteredUsers} chat={chat} selectUser={selectUser} currentUser={currentUser}></UsersList>
+
       </UserContainer>
       <ChatContainer>
         {chat? (

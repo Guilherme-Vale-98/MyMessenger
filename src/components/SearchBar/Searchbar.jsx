@@ -1,8 +1,13 @@
 import React from 'react'
+import { StyledSearch } from './Searchbar.styles'
 
-const Searchbar = () => {
+const Searchbar = ({onChangeHandler}) => {
+
+  
   return (
-    <div>Searchbar</div>
+    <StyledSearch >
+      <input onChange={(e)=> onChangeHandler(e)} type="search"/>
+    </StyledSearch>
   )
 }
 
