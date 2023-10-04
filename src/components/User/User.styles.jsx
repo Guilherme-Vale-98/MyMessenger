@@ -10,6 +10,8 @@ export const UserContainer = styled.div`
     display: flex;
     min-width: 400px;
     max-width: 400px;
+    height: 60vh;
+    overflow: auto;
     flex-direction: column;
     align-items: center;
     font-size: 1.5rem;

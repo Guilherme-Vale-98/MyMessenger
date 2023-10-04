@@ -113,7 +113,6 @@ function Home() {
       <span>Contatos</span>
       <Searchbar onChangeHandler={onChangeHandler}></Searchbar>
       <UsersList users={filteredUsers} chat={chat} selectUser={selectUser} currentUser={currentUser}></UsersList>
-
       </UserContainer>
       <ChatContainer>
         {chat? (

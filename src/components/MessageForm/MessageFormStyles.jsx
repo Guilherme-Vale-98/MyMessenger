@@ -39,8 +39,7 @@ export const MessageContainer = styled.div`
     flex-wrap: wrap;
     width: 100%;
     height: 60vh;
-    overflow: auto;
-    
+    overflow: auto;    
     h3{
         width: 100%;
         text-align: center;
