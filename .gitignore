@@ -11,7 +11,7 @@
 # production
 /build
 
-/utils
+/src/utils
 # misc
 .DS_Store
 .env
